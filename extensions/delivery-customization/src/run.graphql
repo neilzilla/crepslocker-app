@@ -1,0 +1,43 @@
+query RunInput {
+  cart {
+    deliveryGroups {
+      deliveryAddress {
+        provinceCode
+      }
+      deliveryOptions {
+        handle
+        title
+        cost {
+          amount
+          currencyCode
+        }
+      }
+    }
+    lines {
+      merchandise {
+        __typename
+        ...on ProductVariant {
+          id
+          sku
+          title
+          express_shipping: metafield (namespace: "custom", key: "express_shipping") {
+            value
+            type
+          }
+          seven_fourteen: metafield (namespace: "custom", key: "seven_fourteen") {
+            value
+            type
+          }
+          seven_twentyone: metafield (namespace: "custom", key: "seven_twentyone") {
+            value
+            type
+          }
+          product {
+            id
+            title
+          }
+        }
+      }
+    }
+  }
+}
